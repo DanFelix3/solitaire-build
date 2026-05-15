@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solitaire</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Loading screen -->
+    <div id="loading-screen">
+        <div id="loading-text">
+            <span>S</span>
+            <span>O</span>
+            <span>L</span>
+            <span>I</span>
+            <span>T</span>
+            <span>A</span>
+            <span>I</span>
+            <span>R</span>
+            <span>E</span>
+            <p>May take few seconds...</p>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen">
+
+        <!-- Slide-out menu -->
+        <div class="off-screen-menu">
+            <div class="menu-items" id="menu-how"><p>How to play</p></div>
+            <div class="menu-items" id="menu-reset"><p>Reset</p></div>
+            <div class="menu-items" id="menu-quit"><p>Quit</p></div>
+        </div>
+
+        <!-- How to play modal -->
+        <div id="how-to-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>How to Play</h2>
+                <ul>
+                    <li>Build foundation piles Ace to King per suit (top-right).</li>
+                    <li>Tableau: descending rank, alternating colors.</li>
+                    <li>Only a King can fill an empty tableau column.</li>
+                    <li>Click the deck to draw 1 card at a time.</li>
+                    <li>Click the top drawn card again to send it back into the deck.</li>
+                    <li>Drag cards or click to select, then click a destination.</li>
+                    <li>Face-down cards flip automatically when exposed.</li>
+                </ul>
+                <button id="close-modal">Got it!</button>
+            </div>
+        </div>
+
+        <!-- Win screen -->
+        <div id="win-screen" class="hidden">
+            <div id="win-content">
+                <h1>You Win!</h1>
+                <p id="win-score-text">Score: 0</p>
+                <p id="win-time-text">Time: 0:00</p>
+                <button id="win-reset">Play Again</button>
+            </div>
+        </div>
+
+        <!-- Nav bar -->
+        <header class="header-class">
+            <nav>
+                <div id="nav-text"><p>Solitaire</p></div>
+                <div class="ham-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Top row: stock | waste | stats panel | foundations -->
+        <div id="top-row">
+
+            <div id="stock" class="pile-slot" title="Click to draw">
+                <span class="empty-label">&#x21BA;</span>
+            </div>
+
+            <!-- Waste: fixed wrapper so fan doesn't push layout -->
+            <div id="waste-wrapper">
+                <div id="waste"></div>
+            </div>
+
+            <!-- Stats panel -->
+            <div id="stats-panel">
+                <div class="stat-item">
+                    <span class="stat-label">SCORE</span>
+                    <span class="stat-value" id="score-display">0</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-label">TIME</span>
+                    <span class="stat-value" id="timer-display">0:00</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-label">UNDO DRAW</span>
+                    <button id="powerup-btn" title="Send top waste card back into the deck">&#x21A9;</button>
+                </div>
+            </div>
+
+            <!-- Foundation slots -->
+            <div id="foundations">
+                <div class="foundation-slot pile-slot" data-suit="heart">
+                    <img src="assets/svg/heart.svg" alt="heart" class="suit-placeholder">
+                </div>
+                <div class="foundation-slot pile-slot" data-suit="diamond">
+                    <img src="assets/svg/diamond.svg" alt="diamond" class="suit-placeholder">
+                </div>
+                <div class="foundation-slot pile-slot" data-suit="spade">
+                    <img src="assets/svg/spade.svg" alt="spade" class="suit-placeholder">
+                </div>
+                <div class="foundation-slot pile-slot" data-suit="clover">
+                    <img src="assets/svg/clover.svg" alt="clover" class="suit-placeholder">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Tableau: 7 columns -->
+        <div id="tableau">
+            <div class="tableau-col" data-col="0"></div>
+            <div class="tableau-col" data-col="1"></div>
+            <div class="tableau-col" data-col="2"></div>
+            <div class="tableau-col" data-col="3"></div>
+            <div class="tableau-col" data-col="4"></div>
+            <div class="tableau-col" data-col="5"></div>
+            <div class="tableau-col" data-col="6"></div>
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
